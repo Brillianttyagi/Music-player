@@ -38,15 +38,15 @@ def backcomm():
 root = Tk()
 root.title("Musicfy")
 root.geometry("600x400")
-root.iconbitmap('music3.ico')
+root.iconbitmap('images\music3.ico')
 root.resizable(0,0)
 
 mixer.init()
-play = PhotoImage(file = "Play.png") 
-pause = PhotoImage(file = "Pause.png")
-back = PhotoImage(file = "backward.png")
-forward =PhotoImage(file = "Forward.png")
-image1 = PhotoImage(file = "Music-Heart-icon.png")
+play = PhotoImage(file = "images\Play.png") 
+pause = PhotoImage(file = "images\Pause.png")
+back = PhotoImage(file = "images\Backward.png")
+forward =PhotoImage(file = "images\Forward.png")
+image1 = PhotoImage(file = "images\Capture.png")
 
 song = StringVar()
 status = StringVar()
@@ -86,7 +86,7 @@ label.pack(expand = True , fill = BOTH)
 
 playlist = Listbox(frame1,selectbackground="gold",selectmode=SINGLE,font=("times new roman",12,"bold"),bg="white",fg="navyblue",bd=5,relief=GROOVE)
 playlist.pack(fill = BOTH)
-os.chdir("D:\\destop_items\\fav songs")
+os.chdir("Enter Your music folder address") #here is your music address
     # Fetching Songs
 songtracks = os.listdir()
     # Inserting Songs into Playlist
