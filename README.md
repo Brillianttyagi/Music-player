@@ -8,5 +8,5 @@ It is a simple application that plays music created in python
 
 # How to install
 step 1. clone this repository
-step 2. open and add your music location in the code whre i write "Enter your music folder location"
+step 2. open and add your music location in the code where i write "Enter your music folder location"
 step 3. run
