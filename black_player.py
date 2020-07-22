@@ -108,7 +108,6 @@ def playmusic():
     song_ =playlist.get(ACTIVE)
     new_path=os.path.join(st , song_)
     song.set(song_)
-    print(new_path)
     mixer.music.load(song_)
     # Playing Selected Song
     mixer.music.play()
