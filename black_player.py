@@ -209,101 +209,102 @@ def greytheme():
 
 def about():
     showinfo("Music player","by deepanshu tyagi")
-    
-root = Tk()
-photo=PhotoImage(file = "Music-Heart-icon.png")
-root.title("Musicfy")
-root.geometry("600x520")
-root.iconbitmap('music3.ico')
-root.resizable(0,0)
-root.configure(background= "black")
-root.attributes("-alpha", 0.9)
 
-mixer.init()
-play = PhotoImage(file = "Play.png") 
-pause = PhotoImage(file = "Pause.png")
-back = PhotoImage(file = "backward.png")
-forward =PhotoImage(file = "Forward.png")
-queuep = PhotoImage(file = "interface.png")
-arrow1 =PhotoImage(file = "arrows(1).png")
-arrow2 =PhotoImage(file = "arrows.png")
-vol1 = PhotoImage(file = "vol.png")
-img1 = PhotoImage(file = "mute1.png")
+if __name__ == "__main__":
+    root = Tk()
+    photo=PhotoImage(file = "Music-Heart-icon.png")
+    root.title("Musicfy")
+    root.geometry("600x520")
+    root.iconbitmap('music3.ico')
+    root.resizable(0,0)
+    root.configure(background= "black")
+    root.attributes("-alpha", 0.9)
 
-
-song = StringVar()
-song.set("Welcome to Musicfy")
-status = StringVar()
-index = 0
-st = str(os.path.join(Path.home(), "Music"))
-currentdir = os.path.abspath(os.getcwd())
-new_path = ""
-
-Menu1 = Menu(root)
-root.config(menu = Menu1)
-
-filemenu = Menu(root,tearoff = 0)
-filemenu.add_command(label="Open",command = fileopen)
-Menu1.add_cascade(label="File" ,menu = filemenu)
-
-thememenu = Menu(root,tearoff=0)
-thememenu.add_command(label="light",command = lighttheme)
-thememenu.add_command(label="dark",command = darktheme)
-thememenu.add_command(label="grey",command = greytheme)
-filemenu.add_cascade(label="Theme" ,menu = thememenu)
+    mixer.init()
+    play = PhotoImage(file = "Play.png") 
+    pause = PhotoImage(file = "Pause.png")
+    back = PhotoImage(file = "backward.png")
+    forward =PhotoImage(file = "Forward.png")
+    queuep = PhotoImage(file = "interface.png")
+    arrow1 =PhotoImage(file = "arrows(1).png")
+    arrow2 =PhotoImage(file = "arrows.png")
+    vol1 = PhotoImage(file = "vol.png")
+    img1 = PhotoImage(file = "mute1.png")
 
 
-helpmenu = Menu(root, tearoff = 0)
-helpmenu.add_command(label="about",command = about)
-Menu1.add_cascade(label = "Help",menu = helpmenu)
+    song = StringVar()
+    song.set("Welcome to Musicfy")
+    status = StringVar()
+    index = 0
+    st = str(os.path.join(Path.home(), "Music"))
+    currentdir = os.path.abspath(os.getcwd())
+    new_path = ""
 
-opacitymenu = Menu(root,tearoff =0)
-opacitymenu.add_command(label = "100%",command =opacity100)
-opacitymenu.add_command(label = "90%",command =opacity90)
-opacitymenu.add_command(label = "80%",command =opacity80)
-opacitymenu.add_command(label = "70%",command =opacity70)
-opacitymenu.add_command(label = "60%",command =opacity60)
-opacitymenu.add_command(label = "50%",command =opacity50)
-filemenu.add_cascade(label = "Opacity",menu = opacitymenu)
+    Menu1 = Menu(root)
+    root.config(menu = Menu1)
 
-musicframe = LabelFrame(root,bg = "black" ,relief = GROOVE)
-musicframe.place(x=160,y=50,width= 260,height=300)
+    filemenu = Menu(root,tearoff = 0)
+    filemenu.add_command(label="Open",command = fileopen)
+    Menu1.add_cascade(label="File" ,menu = filemenu)
 
-buttonframe = LabelFrame(root,bg="black",bd =0,relief=GROOVE)
-buttonframe.place(x=160,y=400,width=600,height =80)
-
-frame1 = LabelFrame(root,bg ="black", relief = GROOVE) 
-frame1.place(x=600,y=0,width=400, height = 500)
-
-label1=Label(musicframe,bg = "black",image=photo,bd = 0,relief = GROOVE)
-label1.pack(expand = True ,fill = BOTH)
-#Label(musicframe ,font = ("times new roman",15,"bold"),bg = "black",fg = "red",bd = 0,relief = GROOVE).grid(row=1,column=2)
-label2 =Label(root,text = "Welcome to Musicfy ",textvariable=song,bg = "red",font=("times new roman",11),fg = "black",bd = 0,relief = GROOVE)
-
-label2.pack(side = BOTTOM,fill = BOTH)
-
-#listbox
-
-playlist = Listbox(frame1,selectbackground="gold",selectmode=SINGLE,font=("times new roman",12,"bold"),bg="black",fg="red",bd=5,relief=GROOVE)
-playlist.pack(expand =True,fill = BOTH)
-
-musiclist()
-
-playbutton = Button(buttonframe, image =play ,bg = "black" ,bd =0, relief = GROOVE,command =lambda: playmusic())
-playbutton.place(x =110 ,y= 15)
-
-pausebutton = Button(buttonframe, image =pause ,bg = "black" ,bd =0, relief = GROOVE,command = pausemusic)
-
-queuebutton = Button(buttonframe,image=queuep,bg = "black",bd=1,relief = GROOVE,command = hide)
-queuebutton.place(x=400,y=15)
-
-backbutton = Button(buttonframe, image =back ,bg = "black" ,bd =0, relief = GROOVE,command = backcomm)
-backbutton.place(x = 0 ,y = 15)
-forwardbutton =Button(buttonframe, image =forward ,bg = "black" ,bd =0, relief = GROOVE,command = next)
-forwardbutton.place(x= 215 ,y = 15)
-volbutton = Button(root,image = vol1,bg = "black",activebackground = "red",bd = 0,relief = GROOVE,command = vol)
-volbutton.place(x=105,y=420)
-scale1 = ttk.Scale(root,from_ = 100, to=0 ,orient = VERTICAL , command_ = volume)
+    thememenu = Menu(root,tearoff=0)
+    thememenu.add_command(label="light",command = lighttheme)
+    thememenu.add_command(label="dark",command = darktheme)
+    thememenu.add_command(label="grey",command = greytheme)
+    filemenu.add_cascade(label="Theme" ,menu = thememenu)
 
 
-root.mainloop()
+    helpmenu = Menu(root, tearoff = 0)
+    helpmenu.add_command(label="about",command = about)
+    Menu1.add_cascade(label = "Help",menu = helpmenu)
+
+    opacitymenu = Menu(root,tearoff =0)
+    opacitymenu.add_command(label = "100%",command =opacity100)
+    opacitymenu.add_command(label = "90%",command =opacity90)
+    opacitymenu.add_command(label = "80%",command =opacity80)
+    opacitymenu.add_command(label = "70%",command =opacity70)
+    opacitymenu.add_command(label = "60%",command =opacity60)
+    opacitymenu.add_command(label = "50%",command =opacity50)
+    filemenu.add_cascade(label = "Opacity",menu = opacitymenu)
+
+    musicframe = LabelFrame(root,bg = "black" ,relief = GROOVE)
+    musicframe.place(x=160,y=50,width= 260,height=300)
+
+    buttonframe = LabelFrame(root,bg="black",bd =0,relief=GROOVE)
+    buttonframe.place(x=160,y=400,width=600,height =80)
+
+    frame1 = LabelFrame(root,bg ="black", relief = GROOVE) 
+    frame1.place(x=600,y=0,width=400, height = 500)
+
+    label1=Label(musicframe,bg = "black",image=photo,bd = 0,relief = GROOVE)
+    label1.pack(expand = True ,fill = BOTH)
+    #Label(musicframe ,font = ("times new roman",15,"bold"),bg = "black",fg = "red",bd = 0,relief = GROOVE).grid(row=1,column=2)
+    label2 =Label(root,text = "Welcome to Musicfy ",textvariable=song,bg = "red",font=("times new roman",11),fg = "black",bd = 0,relief = GROOVE)
+
+    label2.pack(side = BOTTOM,fill = BOTH)
+
+    #listbox
+
+    playlist = Listbox(frame1,selectbackground="gold",selectmode=SINGLE,font=("times new roman",12,"bold"),bg="black",fg="red",bd=5,relief=GROOVE)
+    playlist.pack(expand =True,fill = BOTH)
+
+    musiclist()
+
+    playbutton = Button(buttonframe, image =play ,bg = "black" ,bd =0, relief = GROOVE,command =lambda: playmusic())
+    playbutton.place(x =110 ,y= 15)
+
+    pausebutton = Button(buttonframe, image =pause ,bg = "black" ,bd =0, relief = GROOVE,command = pausemusic)
+
+    queuebutton = Button(buttonframe,image=queuep,bg = "black",bd=1,relief = GROOVE,command = hide)
+    queuebutton.place(x=400,y=15)
+
+    backbutton = Button(buttonframe, image =back ,bg = "black" ,bd =0, relief = GROOVE,command = backcomm)
+    backbutton.place(x = 0 ,y = 15)
+    forwardbutton =Button(buttonframe, image =forward ,bg = "black" ,bd =0, relief = GROOVE,command = next)
+    forwardbutton.place(x= 215 ,y = 15)
+    volbutton = Button(root,image = vol1,bg = "black",activebackground = "red",bd = 0,relief = GROOVE,command = vol)
+    volbutton.place(x=105,y=420)
+    scale1 = ttk.Scale(root,from_ = 100, to=0 ,orient = VERTICAL , command_ = volume)
+
+
+    root.mainloop()
