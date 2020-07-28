@@ -1,3 +1,4 @@
+<img align="left" src="https://github.com/ellerbrock/open-source-badges/blob/master/badges/open-source-v1/open-source-150x25.png?raw=true" />
 # Music-player
 It is a simple application that plays music created in python
 
