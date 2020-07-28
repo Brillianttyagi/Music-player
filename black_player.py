@@ -1,3 +1,4 @@
+# importing required lib
 from tkinter import *
 import os
 from pygame import mixer
@@ -12,6 +13,7 @@ from mutagen.mp3 import MP3
 from time import sleep     
 from pathlib import Path
 
+#functions for opacity
 def opacity100():
     root.attributes("-alpha", 1)
     
@@ -30,6 +32,7 @@ def opacity60():
 def opacity50():
     root.attributes("-alpha", .5)
 
+#function to open file
 def fileopen():
     global st
     path =""
@@ -44,13 +47,12 @@ def fileopen():
 
     except:
         pass
-    
+# functions to control volume    
 def vol():
     if scale1.winfo_manager():
         scale1.place_forget()
     else:
         scale1.place(x=110,y=320)
-
 
 def volume(val):
     global currentdir
@@ -65,7 +67,7 @@ def volume(val):
     else:
         volbutton['image'] = vol1
     os.chdir(st)
-
+#function for music list
 def musiclist():
     global st
     os.chdir(st)
@@ -79,6 +81,7 @@ def musiclist():
             pass
     #Buttons
 
+#function for displaying music picture
 def musicpic():
     global currentdir
     global st
@@ -99,6 +102,7 @@ def musicpic():
         label1['image'] = photo
         os.chdir(st)
 
+#function for play music
 def playmusic():
     global st
     global index
@@ -121,12 +125,14 @@ def playmusic():
     pausebutton.place(x = 110 ,y=15)
     musicpic()
 
-
+#function for pause music
 def pausemusic():
     status.set("--paused")
     mixer.music.pause()
     pausebutton.place_forget()
     playbutton.place(x = 110 ,y=15)
+
+#function to next the song
 def next():
     global index
     global new_path
@@ -141,7 +147,7 @@ def next():
     playbutton.place_forget()
     pausebutton.place(x = 110 ,y=15)
     
-
+#function to play back song
 def backcomm():
     global index
     global new_path
@@ -156,6 +162,7 @@ def backcomm():
     playbutton.place_forget()
     pausebutton.place(x = 110 ,y=15)
 
+#function for hide the playlist
 def hide():
      if frame1.winfo_manager():
          frame1.place_forget()
@@ -165,6 +172,8 @@ def hide():
         frame1.place(x=600,y=0,width=400, height = 500)
         root.geometry("1000x500")
         queuebutton['image'] = arrow1
+
+#funtions for theme-dark,light and grey
 def lighttheme():
     frame1['bg'] = "white"
     musicframe['bg'] = "white"
@@ -206,9 +215,11 @@ def greytheme():
     volbutton['bg'] ="grey"
     root.configure(background = "grey")
 
+#show about
 def about():
     showinfo("Music player","by deepanshu tyagi")
 
+#main program
 if __name__ == "__main__":
     root = Tk()
     photo=PhotoImage(file = "images/Music-Heart-icon.png")
@@ -220,6 +231,7 @@ if __name__ == "__main__":
     root.attributes("-alpha", 0.9)
 
     mixer.init()
+    #buttons images
     play = PhotoImage(file = "images/Play.png") 
     pause = PhotoImage(file = "images/Pause.png")
     back = PhotoImage(file = "images/backward.png")
@@ -230,7 +242,7 @@ if __name__ == "__main__":
     vol1 = PhotoImage(file = "images/vol.png")
     img1 = PhotoImage(file = "images/mute1.png")
 
-
+    #variables initialisation
     song = StringVar()
     song.set("Welcome to Musicfy")
     status = StringVar()
@@ -238,7 +250,7 @@ if __name__ == "__main__":
     st = str(os.path.join(Path.home(), "Music"))
     currentdir = os.path.abspath(os.getcwd())
     new_path = ""
-
+    #creating menubar and adding menus
     Menu1 = Menu(root)
     root.config(menu = Menu1)
 
@@ -265,7 +277,7 @@ if __name__ == "__main__":
     opacitymenu.add_command(label = "60%",command =opacity60)
     opacitymenu.add_command(label = "50%",command =opacity50)
     filemenu.add_cascade(label = "Opacity",menu = opacitymenu)
-
+    #creating frame
     musicframe = LabelFrame(root,bg = "black" ,relief = GROOVE)
     musicframe.place(x=160,y=50,width= 260,height=300)
 
