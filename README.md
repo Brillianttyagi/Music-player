@@ -9,3 +9,6 @@ It is a simple application that plays music created in python
 # How to install
 step 1. clone this repository
 step 2. open and run music_player.py file
+
+## Screenshot of the music player
+<img alt="GIF" src="https://github.com/Brillianttyagi/Music-player/blob/master/images/music%20player.JPG?raw=true" />
